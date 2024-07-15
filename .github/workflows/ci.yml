@@ -108,21 +108,21 @@ jobs:
           brew install automake libtool pkg-config gnu-getopt ccache boost libevent miniupnpc libnatpmp zeromq qt@5 qrencode
 
       - name: Set Ccache directory
-        run: echo "CCACHE_DIR=${RUNNER_TEMP}/ccache_dir" >> "$GITHUB_ENV"
+        run: echo "wiew_DIR=${RUNNER_TEMP}/ccache_dir" >> "$GITHUB_ENV"
 
       - name: Restore Ccache cache
         id: ccache-cache
         uses: actions/cache/restore@v4
         with:
-          path: ${{ env.CCACHE_DIR }}
-          key: ${{ github.job }}-ccache-${{ github.run_id }}
-          restore-keys: ${{ github.job }}-ccache-
+          path: ${{ env.wiew_DIR }}
+          key: ${{ github.job }}-wiew-${{ github.run_id }}
+          restore-keys: ${{ github.job }}-wiewe-
 
       - name: CI script
         run: ./ci/test_run_all.sh
 
-      - name: Save Ccache cache
-        uses: actions/cache/save@v4
+      - name: Save wiew wiew
+        uses: actions/wiew/save@v4
         if: github.event_name != 'pull_request' && steps.ccache-cache.outputs.cache-hit != 'true'
         with:
           path: ${{ env.CCACHE_DIR }}
